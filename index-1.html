@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OmniStitch Pro — Industrial Sewing Machine Encyclopedia</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --steel: #1a1f2e;
+    --iron: #2d3446;
+    --chrome: #4a5568;
+    --gold: #c9a84c;
+    --gold-light: #e6c66e;
+    --rust: #c0392b;
+    --thread-red: #e74c3c;
+    --thread-blue: #2980b9;
+    --white: #f5f0e8;
+    --cream: #ede8d8;
+    --text: #e8e2d4;
+    --muted: #8899aa;
+    --accent: #c9a84c;
+    --green: #27ae60;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--steel);
+    color: var(--text);
+    font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── BACKGROUND TEXTURE ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(135deg, #0d1117 0%, var(--iron) 50%, #0d1117 100%);
+    border-bottom: 3px solid var(--gold);
+    padding: 0 2rem;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  }
+
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo-icon {
+    width: 52px; height: 52px;
+    background: var(--gold);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 0 20px rgba(201,168,76,0.4);
+    flex-shrink: 0;
+  }
+
+  .logo-text h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem;
+    letter-spacing: 3px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .logo-text span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .header-search {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+  }
+  .header-search input {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    padding: 0.6rem 1rem 0.6rem 2.8rem;
+    color: var(--text);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s;
+  }
+  .header-search input:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 15px rgba(201,168,76,0.2);
+  }
+  .header-search input::placeholder { color: var(--muted); }
+  .search-icon {
+    position: absolute;
+    left: 0.8rem; top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  /* ─── WHATSAPP BUTTON ─── */
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.55rem 1.1rem;
+    border-radius: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 0 16px rgba(37,211,102,0.35);
+    transition: all 0.25s;
+  }
+  .whatsapp-btn:hover {
+    background: #1ebe5d;
+    box-shadow: 0 0 24px rgba(37,211,102,0.55);
+    transform: translateY(-1px);
+  }
+  @media (max-width: 768px) {
+    .whatsapp-btn span { display: none; }
+    .whatsapp-btn { padding: 0.55rem 0.75rem; }
+  }
+
+  /* ─── NAV TABS ─── */
+  .nav-tabs {
+    display: flex;
+    gap: 0.3rem;
+    background: rgba(0,0,0,0.3);
+    border-radius: 6px;
+    padding: 0.3rem;
+    flex-wrap: wrap;
+  }
+  .nav-tab {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    transition: all 0.25s;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+  .nav-tab.active {
+    background: var(--gold);
+    color: var(--steel);
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(201,168,76,0.4);
+  }
+
+  /* ─── MAIN LAYOUT ─── */
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn 0.4s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    letter-spacing: 4px;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .section-title span { color: var(--gold); }
+  .section-subtitle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  /* ─── CARD GRID ─── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .machine-card {
+    background: linear-gradient(145deg, var(--iron), #232a3a);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .machine-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .machine-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(201,168,76,0.15);
+  }
+  .machine-card:hover::before {
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .card-header {
+    padding: 1.2rem 1.5rem 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .card-icon {
+    width: 48px; height: 48px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .icon-industrial { background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); }
+  .icon-overlock { background: rgba(41,128,185,0.15); border: 1px solid rgba(41,128,185,0.3); }
+  .icon-manual { background: rgba(39,174,96,0.15); border: 1px solid rgba(39,174,96,0.3); }
+  .icon-auto { background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3); }
+
+  .card-meta { flex: 1; }
+  .card-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  .card-type {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .card-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    align-self: flex-start;
+  }
+  .badge-industrial { background: rgba(201,168,76,0.2); color: var(--gold); border: 1px solid rgba(201,168,76,0.4); }
+  .badge-manual { background: rgba(39,174,96,0.2); color: #2ecc71; border: 1px solid rgba(39,174,96,0.4); }
+  .badge-auto { background: rgba(192,57,43,0.2); color: #e74c3c; border: 1px solid rgba(192,57,43,0.4); }
+  .badge-overlock { background: rgba(41,128,185,0.2); color: #3498db; border: 1px solid rgba(41,128,185,0.4); }
+
+  .card-body { padding: 0 1.5rem 1rem; }
+  .card-desc {
+    font-size: 0.88rem;
+    color: #9aacbb;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .spec-item {
+    background: rgba(0,0,0,0.2);
+    border-radius: 4px;
+    padding: 0.5rem;
+  }
+  .spec-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .spec-value {
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .card-footer {
+    padding: 0.8rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    background: rgba(255,255,255,0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ─── DETAIL MODAL ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem;
+    overflow-y: auto;
+    backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--iron);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 780px;
+    position: relative;
+    animation: modalIn 0.35s cubic-bezier(.34,1.56,.64,1);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(201,168,76,0.1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-top-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    border-radius: 12px 12px 0 0;
+  }
+
+  .modal-header {
+    padding: 1.5rem 2rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .modal-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .modal-subtitle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+  .modal-close {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--text);
+    width: 36px; height: 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .modal-close:hover { background: var(--rust); border-color: var(--rust); }
+
+  .modal-body { padding: 0 2rem 2rem; }
+
+  .modal-tabs {
+    display: flex;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 0;
+  }
+  .modal-tab {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.2s;
+  }
+  .modal-tab:hover { color: var(--text); }
+  .modal-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  .modal-content { display: none; }
+  .modal-content.active { display: block; animation: fadeIn 0.3s ease; }
+
+  /* ─── TROUBLESHOOT SECTION ─── */
+  .trouble-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .trouble-item {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .trouble-item:hover { border-color: rgba(201,168,76,0.3); }
+
+  .trouble-header {
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    user-select: none;
+  }
+
+  .trouble-severity {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .sev-high { background: #e74c3c; box-shadow: 0 0 8px rgba(231,76,60,0.6); }
+  .sev-med { background: #f39c12; box-shadow: 0 0 8px rgba(243,156,18,0.6); }
+  .sev-low { background: #27ae60; box-shadow: 0 0 8px rgba(39,174,96,0.6); }
+
+  .trouble-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--white);
+    flex: 1;
+  }
+  .trouble-arrow {
+    color: var(--muted);
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+  }
+  .trouble-item.open .trouble-arrow { transform: rotate(90deg); }
+
+  .trouble-body {
+    display: none;
+    padding: 0 1.2rem 1.2rem;
+  }
+  .trouble-item.open .trouble-body { display: block; }
+
+  .trouble-causes, .trouble-fixes {
+    margin-bottom: 1rem;
+  }
+  .trouble-causes h4, .trouble-fixes h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .trouble-causes h4 { color: #e74c3c; }
+  .trouble-fixes h4 { color: #27ae60; }
+
+  .trouble-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .trouble-list li {
+    font-size: 0.88rem;
+    color: #9aacbb;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .trouble-causes .trouble-list li::before {
+    content: '⚠';
+    position: absolute; left: 0;
+    color: #e74c3c;
+    font-size: 0.7rem;
+    top: 0.15rem;
+  }
+  .trouble-fixes .trouble-list li::before {
+    content: '✓';
+    position: absolute; left: 0;
+    color: #27ae60;
+    font-size: 0.7rem;
+    top: 0.15rem;
+  }
+
+  /* ─── SPECS TABLE ─── */
+  .specs-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .specs-table th, .specs-table td {
+    text-align: left;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.88rem;
+  }
+  .specs-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(0,0,0,0.2);
+  }
+  .specs-table td:first-child { color: var(--muted); width: 40%; }
+  .specs-table td:last-child { color: var(--text); font-weight: 600; }
+  .specs-table tr:last-child td { border-bottom: none; }
+
+  /* ─── PARTS LIST ─── */
+  .parts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.8rem;
+  }
+  .part-item {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .part-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    min-width: 32px;
+    text-align: center;
+  }
+  .part-name { font-size: 0.85rem; color: var(--text); }
+
+  /* ─── ERROR CODES (Auto Machines) ─── */
+  .error-codes {
+    display: grid;
+    gap: 0.8rem;
+  }
+  .error-card {
+    background: rgba(0,0,0,0.25);
+    border-left: 3px solid var(--thread-red);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.2rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 1rem;
+  }
+  .error-card.warning { border-left-color: #f39c12; }
+  .error-card.info { border-left-color: #3498db; }
+
+  .error-code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--thread-red);
+    background: rgba(231,76,60,0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    min-width: 60px;
+    text-align: center;
+  }
+  .error-card.warning .error-code { color: #f39c12; background: rgba(243,156,18,0.1); }
+  .error-card.info .error-code { color: #3498db; background: rgba(52,152,219,0.1); }
+
+  .error-details { flex: 1; }
+  .error-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .error-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .error-fix {
+    font-size: 0.8rem;
+    color: #2ecc71;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    background: rgba(39,174,96,0.08);
+    border-radius: 4px;
+    border: 1px solid rgba(39,174,96,0.2);
+  }
+  .error-fix strong {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+    opacity: 0.7;
+  }
+
+  /* ─── DASHBOARD / HOME ─── */
+  .dash-hero {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(41,128,185,0.05), rgba(0,0,0,0));
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .dash-hero::after {
+    content: '🧵';
+    position: absolute;
+    right: 2rem; bottom: 0.5rem;
+    font-size: 6rem;
+    opacity: 0.06;
+  }
+  .dash-hero h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .dash-hero h2 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .dash-hero p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  .dash-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-box {
+    background: linear-gradient(145deg, var(--iron), #232a3a);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  .quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .quick-link {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .quick-link:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+    transform: translateX(4px);
+  }
+  .ql-icon { font-size: 1.5rem; }
+  .ql-text strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .ql-text span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+  }
+
+  /* ─── MAINTENANCE CHECKLIST ─── */
+  .checklist {
+    display: grid;
+    gap: 0.7rem;
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .check-item:hover { border-color: rgba(255,255,255,0.12); }
+  .check-item.done { border-color: rgba(39,174,96,0.3); background: rgba(39,174,96,0.05); }
+  .check-box {
+    width: 20px; height: 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .check-item.done .check-box {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+    font-size: 0.8rem;
+  }
+  .check-text { font-size: 0.9rem; color: var(--text); flex: 1; }
+  .check-item.done .check-text { text-decoration: line-through; color: var(--muted); }
+  .check-freq {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .header-inner { flex-wrap: wrap; }
+    .nav-tabs { width: 100%; overflow-x: auto; }
+    main { padding: 1rem; }
+    .dash-hero h2 { font-size: 2.5rem; }
+    .modal-overlay { padding: 1rem; }
+    .modal-header { padding: 1rem 1.2rem 0.8rem; }
+    .modal-body { padding: 0 1.2rem 1.5rem; }
+    .error-card { grid-template-columns: 1fr; }
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--steel); }
+  ::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+  .info-block {
+    background: rgba(0,0,0,0.2);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    font-size: 0.88rem;
+    color: #9aacbb;
+    line-height: 1.7;
+  }
+
+  .step-list {
+    counter-reset: step;
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.7rem;
+  }
+  .step-list li {
+    counter-increment: step;
+    display: flex; gap: 0.8rem; align-items: flex-start;
+    font-size: 0.88rem; color: #9aacbb; line-height: 1.6;
+  }
+  .step-list li::before {
+    content: counter(step);
+    background: var(--gold);
+    color: var(--steel);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">⚙️</div>
+      <div class="logo-text">
+        <h1>OmniStitch Pro</h1>
+        <span>Industrial Sewing Machine Encyclopedia</span>
+      </div>
+    </div>
+    <div class="header-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Search machines, errors, fixes..." id="searchInput" oninput="handleSearch(this.value)">
+    </div>
+    <a href="https://wa.me/254721681418?text=Hello%20OmniStitch%20Pro%2C%20I%20need%20help%20with%20my%20sewing%20machine." target="_blank" class="whatsapp-btn" title="Contact OmniStitch Pro on WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <nav class="nav-tabs" id="navTabs">
+      <button class="nav-tab active" onclick="switchTab('home')">HOME</button>
+      <button class="nav-tab" onclick="switchTab('industrial')">INDUSTRIAL</button>
+      <button class="nav-tab" onclick="switchTab('overlock')">OVERLOCK</button>
+      <button class="nav-tab" onclick="switchTab('auto')">AUTO DOUBLE HEAD</button>
+      <button class="nav-tab" onclick="switchTab('manual')">MANUAL</button>
+      <button class="nav-tab" onclick="switchTab('maintenance')">MAINTENANCE</button>
+      <button class="nav-tab" onclick="switchTab('accessories')">ACCESSORIES</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══ HOME ═══ -->
+  <section id="home" class="section active">
+    <div class="dash-hero">
+      <h2>THE COMPLETE<br><em>SEWING MACHINE</em><br>GUIDE</h2>
+      <p>Comprehensive technical reference for industrial, automatic, and manual sewing machines. Troubleshoot errors, identify parts, and maintain peak performance.</p>
+    </div>
+
+    <div class="dash-stats">
+      <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">Machine Models</div></div>
+      <div class="stat-box"><div class="stat-num">48+</div><div class="stat-label">Fault Codes</div></div>
+      <div class="stat-box"><div class="stat-num">30+</div><div class="stat-label">Repair Guides</div></div>
+      <div class="stat-box"><div class="stat-num">4</div><div class="stat-label">Categories</div></div>
+    </div>
+
+    <div style="margin-bottom:1.5rem">
+      <div class="section-title"><span>QUICK</span> ACCESS</div>
+      <div class="section-subtitle">Jump to any section</div>
+    </div>
+    <div class="quick-links">
+      <div class="quick-link" onclick="switchTab('industrial')">
+        <div class="ql-icon">🏭</div>
+        <div class="ql-text"><strong>Juki & Kansai</strong><span>Industrial lockstitch machines</span></div>
+      </div>
+      <div class="quick-link" onclick="switchTab('overlock')">
+        <div class="ql-icon">🧶</div>
+        <div class="ql-text"><strong>Overlock / Serger</strong><span>Edge finishing machines</span></div>
+      </div>
+      <div class="quick-link" onclick="switchTab('auto')">
+        <div class="ql-icon">🤖</div>
+        <div class="ql-text"><strong>Auto Double Head</strong><span>Errors & fault codes</span></div>
+      </div>
+      <div class="quick-link" onclick="switchTab('manual')">
+        <div class="ql-icon">🪡</div>
+        <div class="ql-text"><strong>Manual Machines</strong><span>Singer, Swan, Butterfly</span></div>
+      </div>
+      <div class="quick-link" onclick="switchTab('maintenance')">
+        <div class="ql-icon">🔧</div>
+        <div class="ql-text"><strong>Maintenance</strong><span>Schedules & checklists</span></div>
+      </div>
+      <div class="quick-link" onclick="switchTab('accessories')">
+        <div class="ql-icon">🧵</div>
+        <div class="ql-text"><strong>Accessories</strong><span>Needles, feet & supplies</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INDUSTRIAL ═══ -->
+  <section id="industrial" class="section">
+    <div class="section-title">INDUSTRIAL <span>MACHINES</span></div>
+    <div class="section-subtitle">Juki · Kansai · Heavy-duty lockstitch systems</div>
+
+    <div class="card-grid" id="industrialGrid">
+
+      <!-- JUKI DDL-8700 -->
+      <div class="machine-card" onclick="openModal('juki8700')">
+        <div class="card-header">
+          <div class="card-icon icon-industrial">⚙️</div>
+          <div class="card-meta">
+            <div class="card-name">Juki DDL-8700</div>
+            <div class="card-type">1-Needle Lockstitch</div>
+          </div>
+          <div class="card-badge badge-industrial">JUKI</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">High-speed 1-needle, 1-thread lockstitch machine optimized for light to medium-weight fabrics. Industry workhorse for garment production.</p>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-label">Max Speed</div><div class="spec-value">5,500 spm</div></div>
+            <div class="spec-item"><div class="spec-label">Stitch Length</div><div class="spec-value">5mm max</div></div>
+            <div class="spec-item"><div class="spec-label">Needle</div><div class="spec-value">DB×1 #9–#18</div></div>
+            <div class="spec-item"><div class="spec-label">Foot Lift</div><div class="spec-value">13mm</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="tag">lockstitch</span><span class="tag">light-medium</span><span class="tag">automated</span>
+        </div>
+      </div>
+
+      <!-- JUKI MO-6714S -->
+      <div class="machine-card" onclick="openModal('jukiMO')">
+        <div class="card-header">
+          <div class="card-icon icon-industrial">⚙️</div>
+          <div class="card-meta">
+            <div class="card-name">Juki DDL-9000C</div>
+            <div class="card-type">Computerized Lockstitch</div>
+          </div>
+          <div class="card-badge badge-industrial">JUKI</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Fully computerized, electronically controlled lockstitch with automatic thread trimming, backtacking, and presser foot lifting.</p>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-label">Max Speed</div><div class="spec-value">5,000 spm</div></div>
+            <div class="spec-item"><div class="spec-label">Stitch Length</div><div class="spec-value">0.1–5mm</div></div>
+            <div class="spec-item"><div class="spec-label">Thread Trim</div><div class="spec-value">Automatic</div></div>
+            <div class="spec-item"><div class="spec-label">Control</div><div class="spec-value">Digital</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="tag">computerized</span><span class="tag">auto-trim</span><span class="tag">high-precision</span>
+        </div>
+      </div>
+
+      <!-- KANSAI SPECIAL -->
+      <div class="machine-card" onclick="openModal('kansai')">
+        <div class="card-header">
+          <div class="card-icon icon-industrial">🏭</div>
+          <div class="card-meta">
+            <div class="card-name">Kansai Special DFB-1404P</div>
+            <div class="card-type">Multi-needle Flatseamer</div>
+          </div>
+          <div class="card-badge badge-industrial">KANSAI</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">4-needle, 6-thread flatseam machine for elastic waistbands, sportswear, and swimwear. Produces flat, flexible seams with exceptional durability.</p>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-label">Needles</div><div class="spec-value">4 needles</div></div>
+            <div class="spec-item"><div class="spec-label">Max Speed</div><div class="spec-value">4,500 spm</div></div>
+            <div class="spec-item"><div class="spec-label">Threads</div><div class="spec-value">6 threads</div></div>
+            <div class="spec-item"><div class="spec-label">Feed</div><div class="spec-value">Differential</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="tag">flatseam</span><span class="tag">elastic</span><span class="tag">sportswear</span>
+        </div>
+      </div>
+
+      <!-- KANSAI SPECIAL WX -->
+      <div class="machine-card" onclick="openModal('kansaiWX')">
+        <div class="card-header">
+          <div class="card-icon icon-industrial">🏭</div>
+          <div class="card-meta">
+            <div class="card-name">Kansai Special WX-8803D</div>
+            <div class="card-type">3-Needle Chainstitch</div>
+          </div>
+          <div class="card-badge badge-industrial">KANSAI</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">3-needle chainstitch machine for denim jeans, workwear, and heavy garments. Double-chainstitch provides excellent stitch security and stretch.</p>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-label">Needles</div><div class="spec-value">3 needles</div></div>
+            <div class="spec-item"><div class="spec-label">Max Speed</div><div class="spec-value">3,500 spm</div></div>
+            <div class="spec-item"><div class="spec-label">Material</div><div class="spec-value">Heavy denim</div></div>
+            <div class="spec-item"><div class="spec-label">Stitch Type</div><div class="spec-value">401 chainstitch</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="tag">chainstitch</span><span class="tag">denim</span><span class="tag">heavy-duty</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Troubleshooting for Industrial -->
+    <div class="section-title" style="font-size:1.8rem; margin-top:2rem"><span>TROUBLESHOOTING</span> GUIDE</div>
+    <div class="section-subtitle">Industrial machine common faults & remedies</div>
+
+    <div class="trouble-grid" id="industrialTrouble">
+      <!-- items injected by JS -->
+    </div>
+  </section>
+
+  <!-- ═══ OVERLOCK ═══ -->
+  <section id="overlock" class="section">
+    <div class="section-title">OVERLOCK <span>MACHINES</span></div>
+    <div class="section-subtitle">Serger · Edge finishing · Rolled hem systems</div>
+
+    <div class="card-grid">
+      <div class="machine-card" onclick="openModal('jukiMO644')">
+        <div class="card-header">
+          <div class="card-icon icon-overlock">🧶</div>
+          <div class="card-meta">
+            <div class="card-name">Juki MO-6714S</div>
+            <div class="card-type">5-Thread Safety Stitch</div>
+          </div>
+          <div class="card-badge badge-overlock">OVERLOCK</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">High-speed 5-thread safety stitch overlock with differential feed. Ideal for knits, jersey, and stretch fabrics in garment production.</p>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-label">Max Speed</div><div class="spec-value">8,000 spm</div></div>
+            <div class="spec-item"><div class="spec-label">Stitch Width</div><div class="spec-value">3–5.7mm</div></div>
+            <div class="spec-item"><div class="spec-label">Threads</div><div class="spec-value">5 threads</div></div>
+            <div class="spec-item"><div class="spec-label">Feed Ratio</div><div class="spec-value">0.7–2.0</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="tag">5-thread</span><span class="tag">safety stitch</span><span class="tag">differential</span>
+        </div>
+      </div>
+
+      <div class="machine-card" onclick="openModal('jukiMO3316')">
+        <div class="card-header">
+          <div class="card-icon icon-overlock">🧶</div>
+          <div class="card-meta">
+            <div class="card-name">Juki MO-3316</div>
+            <div class="card-type">3/4-Thread Overlock</div>
+          </div>
+          <div class="card-badge badge-overlock">OVERLOCK</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Versatile 3/4-thread overlock suitable for light to medium fabrics. Features rolled hem capability and easy thread conversion.</p>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-label">Max Speed</div><div class="spec-value">7,000 spm</div></div>
+            <div class="spec-item"><div class="spec-label">Threads</div><div class="spec-value">3 or 4</div></div>
+            <div class="spec-item"><div class="spec-label">Rolled Hem</div><div class="spec-value">✓ Yes</div></div>
+            <div class="spec-item"><div class="spec-label">Knife</div><div class="spec-value">Upper & lower</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="tag">rolled hem</span><span class="tag">versatile</span><span class="tag">light-medium</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="font-size:1.8rem; margin-top:2rem"><span>OVERLOCK</span> TROUBLESHOOTING</div>
+    <div class="section-subtitle">Common overlock faults</div>
+    <div class="trouble-grid" id="overlockTrouble"></div>
+  </section>
+
+  <!-- ═══ AUTO DOUBLE HEAD ═══ -->
+  <section id="auto" class="section">
+    <div class="section-title">AUTO <span>DOUBLE HEAD</span> MACHINES</div>
+    <div class="section-subtitle">CNC embroidery · Automatic pattern · Error codes & diagnostics</div>
+
+    <div class="card-grid">
+      <div class="machine-card" onclick="openModal('doubleHead')">
+        <div class="card-header">
+          <div class="card-icon icon-auto">🤖</div>
+          <div class="card-meta">
+            <div class="card-name">Double Head Auto Embroidery</div>
+            <div class="card-type">2-Head CNC Embroidery</div>
+          </div>
+          <div class="card-badge badge-auto">AUTOMATIC</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">2-head, 15-color automatic embroidery machine with computerized pattern control. Used for logos, badges, and decorative stitching at scale.</p>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-label">Heads</div><div class="spec-value">2 heads</div></div>
+            <div class="spec-item"><div class="spec-label">Colors</div><div class="spec-value">15 needles</div></div>
+            <div class="spec-item"><div class="spec-label">Max Speed</div><div class="spec-value">1,200 rpm</div></div>
+            <div class="spec-item"><div class="spec-label">Frame</div><div class="spec-value">500×400mm</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="tag">CNC</span><span class="tag">multi-color</span><span class="tag">embroidery</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ERROR CODES -->
+    <div class="section-title" style="font-size:1.8rem; margin-top:2rem"><span>ERROR CODES</span> & FIXES</div>
+    <div class="section-subtitle">Double-head automatic machine diagnostics</div>
+
+    <div class="error-codes" id="errorCodes"></div>
+  </section>
+
+  <!-- ═══ MANUAL ═══ -->
+  <section id="manual" class="section">
+    <div class="section-title">MANUAL <span>MACHINES</span></div>
+    <div class="section-subtitle">Singer · Swan · Butterfly · Domestic lockstitch</div>
+
+    <div class="card-grid">
+      <div class="machine-card" onclick="openModal('singer201')">
+        <div class="card-header">
+          <div class="card-icon icon-manual">🪡</div>
+          <div class="card-meta">
+            <div class="card-name">Singer 201K</div>
+            <div class="card-type">Domestic Lockstitch</div>
+          </div>
+          <div class="card-badge badge-manual">SINGER</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Classic cast-iron domestic machine renowned for smooth operation and durability. Excellent for all medium-weight fabrics; a beloved vintage workhorse.</p>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-label">Drive</div><div class="spec-value">Belt / Motor</div></div>
+            <div class="spec-item"><div class="spec-label">Needle</div><div class="spec-value">15×1 / 130/705</div></div>
+            <div class="spec-item"><div class="spec-label">Stitch</div><div class="spec-value">Lockstitch</div></div>
+            <div class="spec-item"><div class="spec-label">Bobbin</div><div class="spec-value">Long shuttle</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="tag">vintage</span><span class="tag">cast-iron</span><span class="tag">domestic</span>
+        </div>
+      </div>
+
+      <div class="machine-card" onclick="openModal('swan')">
+        <div class="card-header">
+          <div class="card-icon icon-manual">🦢</div>
+          <div class="card-meta">
+            <div class="card-name">Swan Model 1A</div>
+            <div class="card-type">Domestic Treadle / Electric</div>
+          </div>
+          <div class="card-badge badge-manual">SWAN</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Traditional domestic machine with treadle or electric drive. Popular in African and Asian markets for household and small-business tailoring.</p>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-label">Drive</div><div class="spec-value">Treadle / Electric</div></div>
+            <div class="spec-item"><div class="spec-label">Stitch</div><div class="spec-value">Lockstitch</div></div>
+            <div class="spec-item"><div class="spec-label">Thread</div><div class="spec-value">2-thread</div></div>
+            <div class="spec-item"><div class="spec-label">Needle</div><div class="spec-value">15×1</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="tag">treadle</span><span class="tag">affordable</span><span class="tag">reliable</span>
+        </div>
+      </div>
+
+      <div class="machine-card" onclick="openModal('butterfly')">
+        <div class="card-header">
+          <div class="card-icon icon-manual">🦋</div>
+          <div class="card-meta">
+            <div class="card-name">Butterfly JA2-2</div>
+            <div class="card-type">Domestic Lockstitch</div>
+          </div>
+          <div class="card-badge badge-manual">BUTTERFLY</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Entry-level domestic machine with treadle drive. Common in developing markets; simple mechanics make it easy to service and repair locally.</p>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-label">Drive</div><div class="spec-value">Treadle</div></div>
+            <div class="spec-item"><div class="spec-label">Needle</div><div class="spec-value">15×1</div></div>
+            <div class="spec-item"><div class="spec-label">Stitch</div><div class="spec-value">Lockstitch</div></div>
+            <div class="spec-item"><div class="spec-label">Bobbin</div><div class="spec-value">Vibrating shuttle</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="tag">treadle</span><span class="tag">entry-level</span><span class="tag">easy-repair</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="font-size:1.8rem; margin-top:2rem"><span>MANUAL MACHINE</span> TROUBLESHOOTING</div>
+    <div class="section-subtitle">Domestic machine faults & remedies</div>
+    <div class="trouble-grid" id="manualTrouble"></div>
+  </section>
+
+  <!-- ═══ MAINTENANCE ═══ -->
+  <section id="maintenance" class="section">
+    <div class="section-title">MAINTENANCE <span>SCHEDULES</span></div>
+    <div class="section-subtitle">Preventive care checklists for all machine types</div>
+
+    <div class="info-block">
+      🔧 Regular maintenance is the #1 factor in machine longevity. A well-oiled, clean machine runs 40% quieter, lasts 3× longer, and produces fewer skipped stitches and thread breaks.
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin-top:1.5rem">
+      <!-- Daily -->
+      <div>
+        <div class="section-title" style="font-size:1.3rem; margin-bottom:0.3rem">DAILY <span>CHECKLIST</span></div>
+        <div class="section-subtitle" style="margin-bottom:1rem">Before/after each shift</div>
+        <div class="checklist" id="dailyList"></div>
+      </div>
+      <!-- Weekly -->
+      <div>
+        <div class="section-title" style="font-size:1.3rem; margin-bottom:0.3rem">WEEKLY <span>SERVICE</span></div>
+        <div class="section-subtitle" style="margin-bottom:1rem">Every 5 working days</div>
+        <div class="checklist" id="weeklyList"></div>
+      </div>
+      <!-- Monthly -->
+      <div>
+        <div class="section-title" style="font-size:1.3rem; margin-bottom:0.3rem">MONTHLY <span>OVERHAUL</span></div>
+        <div class="section-subtitle" style="margin-bottom:1rem">Full inspection</div>
+        <div class="checklist" id="monthlyList"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem">
+      <div class="section-title" style="font-size:1.8rem"><span>OILING</span> GUIDE</div>
+      <div class="section-subtitle">Lubrication points and oil types</div>
+      <div class="info-block">
+        Use only <strong style="color:var(--gold)">Grade 1 white mineral oil (ISO VG 7-10)</strong> for sewing machines. Never use WD-40 as a lubricant — it attracts lint and gums up mechanisms. Apply 1–2 drops per oil point; wipe excess immediately.
+      </div>
+      <div class="parts-list" style="margin-top:1rem">
+        <div class="part-item"><span class="part-num">O1</span><span class="part-name">Hook race / Rotary hook</span></div>
+        <div class="part-item"><span class="part-num">O2</span><span class="part-name">Needle bar bushing</span></div>
+        <div class="part-item"><span class="part-num">O3</span><span class="part-name">Presser bar guide</span></div>
+        <div class="part-item"><span class="part-num">O4</span><span class="part-name">Take-up lever pivot</span></div>
+        <div class="part-item"><span class="part-num">O5</span><span class="part-name">Lower shaft bearing</span></div>
+        <div class="part-item"><span class="part-num">O6</span><span class="part-name">Upper shaft bearing</span></div>
+        <div class="part-item"><span class="part-num">O7</span><span class="part-name">Feed dog eccentric</span></div>
+        <div class="part-item"><span class="part-num">O8</span><span class="part-name">Tension disk spindle</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ACCESSORIES ═══ -->
+  <section id="accessories" class="section">
+    <div class="section-title">ACCESSORIES <span>& SUPPLIES</span></div>
+    <div class="section-subtitle">Essential parts, needles, feet, and supplies for every machine type</div>
+
+    <div class="info-block">
+      🧵 Using the correct accessories is just as important as machine maintenance. Wrong needles cause skipped stitches, incorrect thread tension, and fabric damage. This guide covers the essentials for industrial and home sewing machines.
+    </div>
+
+    <!-- Needles Guide -->
+    <div style="margin-top:2rem">
+      <div class="section-title" style="font-size:1.8rem"><span>NEEDLE</span> GUIDE</div>
+      <div class="section-subtitle">Selecting the right needle for your fabric and machine</div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top:1rem">
+
+        <div class="card" style="cursor:default">
+          <div class="card-header">
+            <div class="card-icon">🪡</div>
+            <div><div class="card-title">Universal Needles</div><div class="card-model">Size 70/10 – 110/18</div></div>
+          </div>
+          <div class="card-desc">General purpose needles with a slightly rounded point. Suitable for most woven and knit fabrics. The go-to choice for everyday sewing.</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">Woven</span>
+            <span class="tag tag-green">Knit</span>
+            <span class="tag tag-gold">All-Purpose</span>
+          </div>
+        </div>
+
+        <div class="card" style="cursor:default">
+          <div class="card-header">
+            <div class="card-icon">🔵</div>
+            <div><div class="card-title">Ballpoint Needles</div><div class="card-model">Size 70/10 – 100/16</div></div>
+          </div>
+          <div class="card-desc">Rounded tip that slides between fabric fibers rather than piercing them. Essential for knits, jersey, and stretch fabrics to prevent snags and runs.</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">Jersey</span>
+            <span class="tag tag-green">Stretch</span>
+            <span class="tag tag-gold">Knit</span>
+          </div>
+        </div>
+
+        <div class="card" style="cursor:default">
+          <div class="card-header">
+            <div class="card-icon">🔺</div>
+            <div><div class="card-title">Sharp / Microtex</div><div class="card-model">Size 60/8 – 90/14</div></div>
+          </div>
+          <div class="card-desc">Extra sharp point for precision stitching on tightly woven fabrics. Ideal for silk, microfiber, and quilting through multiple layers.</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">Silk</span>
+            <span class="tag tag-green">Microfiber</span>
+            <span class="tag tag-gold">Quilting</span>
+          </div>
+        </div>
+
+        <div class="card" style="cursor:default">
+          <div class="card-header">
+            <div class="card-icon">💎</div>
+            <div><div class="card-title">Leather Needles</div><div class="card-model">Size 80/12 – 110/18</div></div>
+          </div>
+          <div class="card-desc">Wedge-shaped (cutting) point that slices cleanly through leather, suede, and vinyl. Do not use on woven or knit fabrics.</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">Leather</span>
+            <span class="tag tag-green">Vinyl</span>
+            <span class="tag tag-gold">Heavy-Duty</span>
+          </div>
+        </div>
+
+        <div class="card" style="cursor:default">
+          <div class="card-header">
+            <div class="card-icon">🪢</div>
+            <div><div class="card-title">Industrial Needles (DBx1)</div><div class="card-model">Size 9 – 22</div></div>
+          </div>
+          <div class="card-desc">Standard industrial lockstitch needle system. Compatible with Juki DDL, Brother DB2, and most single-needle industrial machines. Round shank.</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">Industrial</span>
+            <span class="tag tag-green">Lockstitch</span>
+            <span class="tag tag-gold">DBx1</span>
+          </div>
+        </div>
+
+        <div class="card" style="cursor:default">
+          <div class="card-header">
+            <div class="card-icon">✂️</div>
+            <div><div class="card-title">Overlock Needles (DCx1)</div><div class="card-model">Size 9 – 16</div></div>
+          </div>
+          <div class="card-desc">Designed for serger/overlock machines. Stronger shank to withstand high-speed operation. Compatible with most industrial overlock models.</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">Overlock</span>
+            <span class="tag tag-green">Serger</span>
+            <span class="tag tag-gold">DCx1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Presser Feet -->
+    <div style="margin-top:2.5rem">
+      <div class="section-title" style="font-size:1.8rem"><span>PRESSER</span> FEET</div>
+      <div class="section-subtitle">Common presser feet and their applications</div>
+      <div class="parts-list" style="margin-top:1rem">
+        <div class="part-item"><span class="part-num">F1</span><span class="part-name">Standard / Zigzag Foot — General sewing, straight and zigzag stitches</span></div>
+        <div class="part-item"><span class="part-num">F2</span><span class="part-name">Zipper Foot — Installing zippers, piping, and cording</span></div>
+        <div class="part-item"><span class="part-num">F3</span><span class="part-name">Buttonhole Foot — Automatic and manual buttonhole creation</span></div>
+        <div class="part-item"><span class="part-num">F4</span><span class="part-name">Walking Foot — Even feeding of multiple layers, quilting, vinyl</span></div>
+        <div class="part-item"><span class="part-num">F5</span><span class="part-name">Roller Foot — Feeding leather, suede, and sticky fabrics</span></div>
+        <div class="part-item"><span class="part-num">F6</span><span class="part-name">Edge / Stitch Guide Foot — Topstitching and edge-stitching</span></div>
+        <div class="part-item"><span class="part-num">F7</span><span class="part-name">Blind Hem Foot — Invisible hemming on garments</span></div>
+        <div class="part-item"><span class="part-num">F8</span><span class="part-name">Teflon / Non-Stick Foot — Sewing over adhesive-backed or coated fabrics</span></div>
+        <div class="part-item"><span class="part-num">F9</span><span class="part-name">Compensating Foot (Industrial) — Consistent edge distance for topstitching</span></div>
+        <div class="part-item"><span class="part-num">F10</span><span class="part-name">Gathering Foot — Creating ruffles and gathers in a single pass</span></div>
+      </div>
+    </div>
+
+    <!-- Bobbins & Thread -->
+    <div style="margin-top:2.5rem">
+      <div class="section-title" style="font-size:1.8rem"><span>BOBBINS</span> & THREAD</div>
+      <div class="section-subtitle">Bobbin types and thread weight reference</div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin-top:1rem">
+
+        <div>
+          <div class="section-title" style="font-size:1.3rem; margin-bottom:0.3rem">BOBBIN <span>TYPES</span></div>
+          <div class="parts-list" style="margin-top:0.8rem">
+            <div class="part-item"><span class="part-num">B1</span><span class="part-name">Class 15 — Universal home machine bobbin</span></div>
+            <div class="part-item"><span class="part-num">B2</span><span class="part-name">Class 66 — Singer vintage and select models</span></div>
+            <div class="part-item"><span class="part-num">B3</span><span class="part-name">L-Style — Most front-loading home machines</span></div>
+            <div class="part-item"><span class="part-num">B4</span><span class="part-name">M-Style — Industrial single-needle machines</span></div>
+            <div class="part-item"><span class="part-num">B5</span><span class="part-name">Large Capacity — High-speed industrial, reduces changes</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title" style="font-size:1.3rem; margin-bottom:0.3rem">THREAD <span>WEIGHTS</span></div>
+          <div class="parts-list" style="margin-top:0.8rem">
+            <div class="part-item"><span class="part-num">T1</span><span class="part-name">Tex 20 (Wt 60) — Lightweight, fine fabrics, heirloom</span></div>
+            <div class="part-item"><span class="part-num">T2</span><span class="part-name">Tex 27 (Wt 50) — General purpose, all-around sewing</span></div>
+            <div class="part-item"><span class="part-num">T3</span><span class="part-name">Tex 40 (Wt 40) — Topstitching, denim, medium-heavy</span></div>
+            <div class="part-item"><span class="part-num">T4</span><span class="part-name">Tex 70 (Wt 30) — Heavy topstitching, upholstery</span></div>
+            <div class="part-item"><span class="part-num">T5</span><span class="part-name">Tex 135 (Wt 10) — Industrial, leather, canvas, bags</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Needle Size Quick Reference -->
+    <div style="margin-top:2.5rem">
+      <div class="section-title" style="font-size:1.8rem"><span>NEEDLE SIZE</span> QUICK REFERENCE</div>
+      <div class="section-subtitle">Match your fabric weight to the correct needle size</div>
+      <div class="info-block" style="margin-top:1rem">
+        <strong style="color:var(--gold)">Lightweight fabrics</strong> (chiffon, organza, voile): Needle 60/8 – 70/10<br><br>
+        <strong style="color:var(--gold)">Medium-weight fabrics</strong> (cotton, linen, poplin): Needle 80/12<br><br>
+        <strong style="color:var(--gold)">Medium-heavy fabrics</strong> (denim, twill, corduroy): Needle 90/14<br><br>
+        <strong style="color:var(--gold)">Heavy fabrics</strong> (canvas, upholstery, multiple layers): Needle 100/16 – 110/18<br><br>
+        <strong style="color:var(--gold)">Extra heavy</strong> (leather, heavy denim stacks): Needle 110/18 – 120/20
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ MODAL ═══ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+  <div class="modal" id="modalContent">
+    <div class="modal-top-bar"></div>
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle">Machine Name</div>
+        <div class="modal-subtitle" id="modalSubtitle">Model Type</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tabs" id="modalTabs">
+        <button class="modal-tab active" onclick="switchModalTab('overview')">OVERVIEW</button>
+        <button class="modal-tab" onclick="switchModalTab('specs')">SPECS</button>
+        <button class="modal-tab" onclick="switchModalTab('parts')">KEY PARTS</button>
+        <button class="modal-tab" onclick="switchModalTab('trouble')">TROUBLESHOOT</button>
+        <button class="modal-tab" onclick="switchModalTab('threading')">THREADING</button>
+      </div>
+      <div id="modalOverview" class="modal-content active"></div>
+      <div id="modalSpecs" class="modal-content"></div>
+      <div id="modalParts" class="modal-content"></div>
+      <div id="modalTrouble" class="modal-content"></div>
+      <div id="modalThreading" class="modal-content"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── NAV ───
+function switchTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const tabs = document.querySelectorAll('.nav-tab');
+  const map = {home:0,industrial:1,overlock:2,auto:3,manual:4,maintenance:5,accessories:6};
+  if(map[id] !== undefined) tabs[map[id]].classList.add('active');
+}
+
+// ─── MODAL ───
+let currentModalId = null;
+function openModal(id) {
+  currentModalId = id;
+  const data = machineData[id];
+  if(!data) return;
+  document.getElementById('modalTitle').textContent = data.name;
+  document.getElementById('modalSubtitle').textContent = data.type;
+  document.getElementById('modalOverview').innerHTML = data.overview;
+  document.getElementById('modalSpecs').innerHTML = data.specs;
+  document.getElementById('modalParts').innerHTML = data.parts;
+  document.getElementById('modalTrouble').innerHTML = data.trouble;
+  document.getElementById('modalThreading').innerHTML = data.threading;
+  document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.modal-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.modal-tab')[0].classList.add('active');
+  document.getElementById('modalOverview').classList.add('active');
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOnBg(e) {
+  if(e.target === document.getElementById('modalOverlay')) closeModal();
+}
+function switchModalTab(name) {
+  document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.modal-content').forEach(c => c.classList.remove('active'));
+  const map = {overview:0,specs:1,parts:2,trouble:3,threading:4};
+  document.querySelectorAll('.modal-tab')[map[name]].classList.add('active');
+  document.getElementById('modal'+name.charAt(0).toUpperCase()+name.slice(1)).classList.add('active');
+}
+
+// ─── TROUBLE ACCORDION ───
+function mkTrouble(items) {
+  return items.map((item,i) => `
+    <div class="trouble-item" id="titem${i}">
+      <div class="trouble-header" onclick="toggleTrouble('titem${i}')">
+        <div class="trouble-severity sev-${item.sev}"></div>
+        <div class="trouble-title">${item.title}</div>
+        <div class="trouble-arrow">▶</div>
+      </div>
+      <div class="trouble-body">
+        <div class="trouble-causes">
+          <h4>Possible Causes</h4>
+          <ul class="trouble-list">${item.causes.map(c=>`<li>${c}</li>`).join('')}</ul>
+        </div>
+        <div class="trouble-fixes">
+          <h4>Remedies & Fixes</h4>
+          <ul class="trouble-list">${item.fixes.map(f=>`<li>${f}</li>`).join('')}</ul>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+function toggleTrouble(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// ─── CHECKLIST ───
+function mkChecklist(items, containerId) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = items.map((item,i) => `
+    <div class="check-item" id="chk_${containerId}_${i}" onclick="toggleCheck('chk_${containerId}_${i}')">
+      <div class="check-box"></div>
+      <span class="check-text">${item.text}</span>
+      <span class="check-freq">${item.freq}</span>
+    </div>
+  `).join('');
+}
+function toggleCheck(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('done');
+  el.querySelector('.check-box').innerHTML = el.classList.contains('done') ? '✓' : '';
+}
+
+// ─── DATA ───
+const industrialTroubleData = [
+  { sev:'high', title:'Thread Breaking Repeatedly', causes:['Needle bent or installed backwards','Thread tension too high','Needle eye too small for thread gauge','Thread path incorrect — skipping a guide','Burr on hook or needle plate'], fixes:['Replace needle; ensure flat side faces back','Reduce upper tension dial 1–2 steps','Match needle size: #14 for 40s thread, #16 for 30s','Rethread from scratch following machine diagram','Polish hook and needle plate with 1500-grit wet paper'] },
+  { sev:'high', title:'Skipped Stitches', causes:['Needle too far from hook at timing point','Needle bent or dull','Wrong needle type for fabric','Presser foot pressure too low','Needle position too low or high'], fixes:['Check timing: hook point should pass needle eye by 1.6–2.5mm at TDC','Replace needle (change every 8–10 hrs of use)','Use ballpoint needle for knits; sharp for wovens','Increase presser foot pressure','Adjust needle bar height per machine manual'] },
+  { sev:'high', title:'Needle Breaking', causes:['Operator pulling fabric','Needle too fine for material','Needle hitting feed dog or needle plate','Presser foot not aligned','Wrong needle clamp tightness'], fixes:['Never pull fabric; let feed dogs advance it','Use #18–#21 needle for denim/heavy materials','Check needle-to-plate clearance; adjust needle plate position','Loosen presser foot, realign, retighten','Tighten clamp screw firmly; check for screw wear'] },
+  { sev:'med', title:'Loose / Uneven Stitches', causes:['Upper thread tension inconsistent','Bobbin thread tension too loose','Thread not seated in tension discs properly','Bobbin wound unevenly','Oil or debris on tension discs'], fixes:['Set upper tension to 3–4 for medium fabric; test on scrap','Tighten bobbin case spring (small screwdriver, ¼ turn CW)','Remove thread, rethread ensuring thread snaps between discs','Re-wind bobbin at slow, consistent speed','Clean tension discs with lint brush; avoid oiling this area'] },
+  { sev:'med', title:'Fabric Not Advancing (Feed Problems)', causes:['Feed dogs lowered','Feed dog height too low','Presser foot pressure too light','Stitch length set to 0','Worn feed dog teeth'], fixes:['Raise feed dogs (lever usually at back of machine)','Adjust feed dog height to 0.8–1mm above needle plate','Increase presser foot spring pressure','Set stitch length to desired setting','Replace feed dogs (worn teeth lose grip)'] },
+  { sev:'low', title:'Machine Running Noisily', causes:['Insufficient lubrication','Loose bobbin case','Hook race needs cleaning','Belt tension incorrect (motor machines)','Worn or loose timing belt'], fixes:['Oil all specified points; run machine at slow speed for 5 min','Check bobbin case latch; ensure case seats fully','Remove hook, clean race with solvent and lint brush, re-oil','Adjust belt tension (should deflect 10–15mm)','Replace timing belt if cracked or stretched'] },
+];
+
+const overlockTroubleData = [
+  { sev:'high', title:'Looper Thread Breaking', causes:['Looper thread path incorrect','Looper hitting needle','Thread too old or brittle','Looper tip has a burr'], fixes:['Rethread looper using color-coded diagrams (usually start from back)','Check looper-to-needle timing clearance (0.05–0.1mm)','Use fresh cone thread; avoid cheap low-twist thread','Polish looper tip with jewellers\' rouge or replace looper'] },
+  { sev:'high', title:'Stitch Unraveling at End', causes:['Insufficient thread chain at seam end','Seam run off too quickly','Tension imbalance'], fixes:['Leave 5–7cm thread chain; knot or tuck chain under seam','Continue sewing 2–3cm off fabric edge for proper chain','Balance upper and lower looper tension equally'] },
+  { sev:'med', title:'Puckered or Stretched Seams', causes:['Differential feed ratio wrong','Presser foot too heavy for fabric','Thread tension too tight','Stitch length too short'], fixes:['Adjust differential feed: 0.7 for stretch, 1.2 for gathering','Lighten presser foot or use a Teflon foot for delicates','Reduce tension on all threads (lower looper first)','Increase stitch length to 3–4mm'] },
+  { sev:'med', title:'Cutting Knife Not Trimming Cleanly', causes:['Upper knife dull or worn','Lower knife out of position','Knife gap too wide','Fabric too thick for knife setting'], fixes:['Replace upper knife (consumable, replace every 3–6 months)','Adjust lower knife so upper knife just overlaps it at lowest point','Set knife gap to 0.0–0.3mm','Switch to heavy-duty knife set for denim/canvas'] },
+];
+
+const manualTroubleData = [
+  { sev:'high', title:'Thread Bunching Under Fabric ("Bird\'s Nest")', causes:['Upper thread not through take-up lever properly','Bobbin thread not drawn up before starting','Upper tension too loose','Thread not under presser foot when starting'], fixes:['Rethread with presser foot raised — this opens tension discs','Raise needle to highest, pull both threads to back 15cm before sewing','Increase upper tension by 1–2 clicks','Lower presser foot before sewing; keep both threads under foot'] },
+  { sev:'high', title:'Bobbin Winding Unevenly', causes:['Thread guide not used when winding','Thread tension on winder too loose','Bobbin seated incorrectly on winder spindle','Winding too fast'], fixes:['Thread through bobbin winding tension guide before winding','Ensure thread runs through tension mechanism on winder','Press bobbin firmly onto winder spindle until it clicks','Wind at moderate speed for even tension'] },
+  { sev:'med', title:'Treadle Machine Skipping Stitches', causes:['Treadle belt slipping','Hook timing off','Needle dull or bent','Belt worn or loose'], fixes:['Tighten belt until minimal slack (15–20mm deflection)','Re-time: hook point passes needle at exactly 2mm above eye','Replace needle — treadles use same 15×1 needle','Replace cracked or stretched leather/rubber belt'] },
+  { sev:'med', title:'Stitch Length Inconsistent', causes:['Feed dog height incorrect','Treadle speed irregular (manual machines)','Presser foot wobbling','Feed mechanism worn'], fixes:['Set feed dog height to 0.75mm above plate','Maintain steady, consistent treadle rhythm','Tighten presser foot screw; replace worn presser bar','Inspect and replace worn feed eccentric linkage'] },
+  { sev:'low', title:'Machine Stiff / Hard to Turn', causes:['Old thickened oil in mechanism','Lint buildup in hook race','Rust from storage','Belt or bobbin winder engaged'], fixes:['Flush old oil with sewing machine oil; run at low speed','Disassemble hook race; clean with kerosene, re-oil with white mineral oil','Apply oil, work slowly to distribute; for severe rust use penetrating oil first','Disengage bobbin winder spindle; check belt is not locked'] },
+];
+
+const errorCodesData = [
+  { code:'E01', name:'Thread Break — Head 1', desc:'Upper thread break detected on head 1. Machine halts and parks needle at top position.', fix:'Re-thread head 1 upper thread path completely. Check for burrs on thread guides. Replace needle if bent. Verify thread spool feeds freely.', type:'error' },
+  { code:'E02', name:'Thread Break — Head 2', desc:'Upper thread break detected on head 2. Same as E01 but for second head.', fix:'Same procedure as E01 on head 2. If persistent, check head 2 thread detector sensor — clean with compressed air or replace sensor.', type:'error' },
+  { code:'E03', name:'Bobbin/Lower Thread Empty', desc:'Bobbin thread sensor detects empty or near-empty bobbin in active head.', fix:'Replace bobbin. Wind new bobbin to full capacity. Check bobbin thread sensor if alarm triggers with full bobbin (sensor may be dirty).', type:'error' },
+  { code:'E04', name:'Frame Move Error', desc:'Frame (hoop) failed to reach commanded position within timeout period.', fix:'Check for mechanical obstruction in frame travel path. Verify frame drive belts are intact and tensioned. Calibrate frame home position. Clean X/Y rails and re-lubricate.', type:'error' },
+  { code:'E05', name:'Needle Collision Detected', desc:'Needle position sensor detected unexpected resistance — possible needle hit frame or thick seam.', fix:'Check needle for bend (replace if any doubt). Inspect hoop for damage. Verify design does not stitch outside hoop boundary. Reset and retry.', type:'error' },
+  { code:'E06', name:'Color Change Failure', desc:'Color change mechanism did not complete within expected cycle time.', fix:'Check color change motor and drive mechanism for obstructions. Verify hook color change cam is clean and lubricated. Manually advance color changer to see if it moves freely.', type:'error' },
+  { code:'W01', name:'Low Thread Warning — Head 1', desc:'Thread tension sensor on head 1 detects tension outside normal range. Stitching may degrade.', fix:'Check upper thread tension dial (normal range 3–5). Rethread if needed. Inspect tension disc faces for wear or debris.', type:'warning' },
+  { code:'W02', name:'Low Thread Warning — Head 2', desc:'Same as W01 for head 2.', fix:'Same procedure as W01 applied to head 2 thread path and tension assembly.', type:'warning' },
+  { code:'W03', name:'Speed Limit Warning', desc:'Current design density/stitch count exceeds recommended speed for current fabric type.', fix:'Reduce machine speed by 10–15%. For high-density designs (>10,000 stitches), run below 900 RPM. Check design file for excessive pull compensation.', type:'warning' },
+  { code:'E10', name:'X-Axis Motor Fault', desc:'X-axis stepper/servo motor has stalled or encoder reports position mismatch.', fix:'Power cycle machine. Check X-axis motor connector and cable. If fault persists, check encoder and motor driver board. Inspect X rail for binding.', type:'error' },
+  { code:'E11', name:'Y-Axis Motor Fault', desc:'Y-axis stepper/servo motor has stalled or encoder reports position mismatch.', fix:'Same as E10 but for Y-axis components. Ensure Y-rail is clean and lubricated with light machine grease.', type:'error' },
+  { code:'E20', name:'Communication Error (PC-Machine)', desc:'Loss of serial/USB communication between control computer and machine controller.', fix:'Check USB/serial cable connections. Restart embroidery software. Verify correct COM port selected. If using USB, try a different port or shorter cable (<3m).', type:'error' },
+  { code:'E30', name:'Power Supply Undervoltage', desc:'Machine detects supply voltage below minimum operating threshold (usually <200V for 220V machines).', fix:'Check power supply voltage with meter. Verify dedicated circuit is not overloaded. Check machine power cable and connector for damage.', type:'error' },
+  { code:'I01', name:'Design Load Complete', desc:'Design file successfully transferred from memory card or computer to machine buffer.', fix:'This is an informational code — no action needed. Machine is ready to start.', type:'info' },
+];
+
+const dailyItems = [
+  {text:'Clean lint from hook race and bobbin area', freq:'Every use'},
+  {text:'Check needle for straightness and sharpness', freq:'Daily'},
+  {text:'Wipe throat plate and feed dogs', freq:'Daily'},
+  {text:'Check thread path for snags or knots', freq:'Daily'},
+  {text:'Test stitch on scrap before production', freq:'Daily'},
+  {text:'Check oil level in oil window (industrial)', freq:'Daily'},
+];
+const weeklyItems = [
+  {text:'Oil all designated lubrication points', freq:'Weekly'},
+  {text:'Remove and clean bobbin case thoroughly', freq:'Weekly'},
+  {text:'Inspect and clean feed dogs', freq:'Weekly'},
+  {text:'Check belt tension and condition', freq:'Weekly'},
+  {text:'Clean presser foot and foot bar', freq:'Weekly'},
+  {text:'Blow out machine interior with compressed air', freq:'Weekly'},
+];
+const monthlyItems = [
+  {text:'Remove and deep-clean hook race assembly', freq:'Monthly'},
+  {text:'Check needle bar height and timing', freq:'Monthly'},
+  {text:'Inspect all electrical connections (electric)', freq:'Monthly'},
+  {text:'Test and adjust thread tension mechanism', freq:'Monthly'},
+  {text:'Check all screws and tighten as needed', freq:'Monthly'},
+  {text:'Inspect foot controller and motor brushes', freq:'Monthly'},
+  {text:'Replace needle as preventive measure', freq:'Monthly'},
+];
+
+// ─── MACHINE DATA ───
+const specTable = (rows) => `<table class="specs-table"><tbody>${rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</tbody></table>`;
+const partsList = (items) => `<div class="parts-list">${items.map((p,i)=>`<div class="part-item"><span class="part-num">${String(i+1).padStart(2,'0')}</span><span class="part-name">${p}</span></div>`).join('')}</div>`;
+const threadingSteps = (steps) => `<ul class="step-list">${steps.map(s=>`<li>${s}</li>`).join('')}</ul>`;
+
+const machineData = {
+  juki8700: {
+    name:'Juki DDL-8700', type:'1-Needle Lockstitch · Industrial',
+    overview:`<div class="info-block">The Juki DDL-8700 is one of the most widely used industrial lockstitch machines in the world. Designed for high-speed, continuous garment production, it delivers consistent stitch quality on light to medium-weight fabrics including cotton, polyester blends, and lightweight denim.</div><p style="color:#9aacbb;font-size:.88rem;line-height:1.7;margin-top:1rem">Key strengths include its quiet operation (compared to older models), built-in oil-level window, and easy hook access for cleaning. The machine is preferred in shirt factories, garment assembly lines, and tailoring workshops.</p>`,
+    specs: specTable([['Max Speed','5,500 spm'],['Stitch Length','Max 5mm (adjustable)'],['Needle Bar Stroke','31.7mm'],['Needle','DB×1 #9–#18'],['Presser Foot Lift','13mm (manual), 5.5mm (knee)'],['Hook','Rotary (full rotation)'],['Lubrication','Auto oil wick system'],['Bobbin','CB type (Class 15)'],['Power','250W, 220V/110V'],['Weight','34 kg (with stand)']]),
+    parts: partsList(['Needle (DB×1)','Presser foot','Throat plate (needle plate)','Feed dog','Bobbin case (CB type)','Rotary hook','Take-up lever','Needle bar','Presser bar','Thread tension assembly','Stitch length regulator','Hand wheel','Bobbin winder','Oil wick pad set','Belt (V-belt)']),
+    trouble: mkTrouble(industrialTroubleData.slice(0,4)),
+    threading: `<div class="info-block">Always raise presser foot before threading — this opens the tension discs. Start with bobbin threading, then upper thread.</div><ul class="step-list"><li>Wind bobbin and insert into bobbin case, leaving 10cm thread tail</li><li>Insert bobbin case into hook, ensuring it clicks into latch</li><li>Place thread spool on spool pin</li><li>Thread through spool pin thread guide (top)</li><li>Down through front thread guide bracket</li><li>Through tension disc assembly (between the discs)</li><li>Up through take-up spring guide</li><li>Up through take-up lever (left slot, right to left)</li><li>Down through lower needle bar guides (1 or 2 guides)</li><li>Thread needle left to right (or front to back — check your needle)</li><li>Draw bobbin thread up through throat plate hole</li><li>Pull both threads 15cm to the back before starting</li></ul>`
+  },
+  jukiMO: {
+    name:'Juki DDL-9000C', type:'Computerized Lockstitch · Industrial',
+    overview:`<div class="info-block">The DDL-9000C represents the evolution of industrial lockstitch with full digital control. Its automatic functions eliminate many manual adjustments, reducing operator skill requirements and increasing consistency.</div><p style="color:#9aacbb;font-size:.88rem;line-height:1.7;margin-top:1rem">Features include auto thread trimming at end of seam, auto backtacking at seam start/end, knee-operated presser foot lift, and digital stitch length and tension settings via control panel.</p>`,
+    specs: specTable([['Max Speed','5,000 spm'],['Stitch Length','0.1–5mm (digital)'],['Thread Trim','Automatic'],['Backtack','Automatic (programmable)'],['Presser Foot Lift','Knee lever + auto'],['Needle','DB×1 #9–#18'],['Control Panel','LED digital'],['Motor','Direct drive (no belt)'],['Weight','36kg with stand']]),
+    parts: partsList(['Direct drive servo motor','Digital control panel','Auto thread trimmer assembly','Auto backtack solenoid','Knee lift lever mechanism','Rotary hook (CB type)','Needle DB×1','Thread tension (electronic)','Needle plate (several types)','Wiper (thread wiper blade)']),
+    trouble: mkTrouble([{sev:'high',title:'Auto Thread Trim Failing',causes:['Trimmer blade worn','Thread cutter timing off','Thread not positioned correctly before trim'],fixes:['Replace upper and lower trimmer blades (set)','Adjust trimmer cam timing per service manual','Check thread path leads thread into trimmer zone']},{sev:'med',title:'Control Panel Error Codes',causes:['E1: Motor overload','E3: Thread trim error','E5: Home position error'],fixes:['E1: Reduce speed; check motor temp','E3: Clean trimmer mechanism; replace blade','E5: Power off, manually bring needle to top, restart']}]),
+    threading: `<ul class="step-list"><li>Same as DDL-8700 upper threading</li><li>Ensure thread passes through thread wiper guide near needle</li><li>For auto-trim: pull both threads 8–10cm to rear (shorter than manual)</li><li>Set control panel to desired stitch length and tension</li><li>Program backtack count (2–4 stitches typical)</li></ul>`
+  },
+  kansai: {
+    name:'Kansai Special DFB-1404P', type:'4-Needle Flatseamer',
+    overview:`<div class="info-block">The DFB-1404P creates flat, strong seams used extensively in sportswear, swimwear, underwear, and activewear. Its flatseam construction lies completely flat against skin — essential for athletic garments.</div>`,
+    specs: specTable([['Needles','4'],['Threads','6 (4 needle + 2 spreader)'],['Max Speed','4,500 spm'],['Seam Width','6.4mm'],['Differential Feed','0.7–2.5'],['Needle','TV×7 #9–#16'],['Application','Elastic, swimwear, sportswear']]),
+    parts: partsList(['4 needles (TV×7)','2 loopers (upper/lower)','2 spreaders','Differential feed (front/rear dog)','Needle plate (wide format)','Presser foot (multi-slot)','Thread guides (6 positions)','Feed adjustment lever','Spreader tension spring']),
+    trouble: mkTrouble([{sev:'high',title:'Flatseam Tunneling (Raised Center)',causes:['Tension balance off between spreader threads','Stitch width too narrow','Differential ratio incorrect'],fixes:['Balance both spreader thread tensions equally; loosen slightly','Widen stitch width setting','Set differential to 1.0 for most fabrics; increase for stretch']},{sev:'med',title:'Needle Breaking on Waistband',causes:['Elastic too thick at join','Wrong needle gauge','Sewing over existing seam at high speed'],fixes:['Slow down at elastic joins','Use #16–#18 needle for thick elastic','Reduce speed over seam intersections']}]),
+    threading:`<ul class="step-list"><li>Thread 4 needles using color-coded threading chart (right-to-left order)</li><li>Thread upper looper through back guide, down through looper eye</li><li>Thread lower looper from front</li><li>Thread both spreaders from spool pins through side guides</li><li>Run machine slowly for 2–3 cm before full-speed production</li></ul>`
+  },
+  kansaiWX: {
+    name:'Kansai Special WX-8803D', type:'3-Needle Chainstitch',
+    overview:`<div class="info-block">Purpose-built for denim and heavy-duty workwear, the WX-8803D produces a 401 chainstitch with superior seam strength. The chainstitch allows stretch and recovery, making it ideal for curved seams in jeans.</div>`,
+    specs: specTable([['Needles','3'],['Stitch Type','401 Multi-needle chainstitch'],['Max Speed','3,500 spm'],['Needle','TV×5 or DC×27'],['Material','Denim, canvas, heavy twill'],['Feed','Bottom feed + needle feed'],['Throat Clearance','14mm']]),
+    parts: partsList(['3 needles (TV×5)','3 loopers','Needle feed mechanism','Feed dog (heavy duty)','Presser foot (heavy denim)','Thread stand (6 spools)','Needle plate (3-needle)','Looper timing cam','Tension assemblies ×3']),
+    trouble: mkTrouble([{sev:'high',title:'Chainstitch Unraveling from Seam End',causes:['Insufficient thread chain','Not continuing off fabric edge','End seam cut too close to last stitch'],fixes:['Run 5–7cm chain off end of fabric','Chain stitch ends must always be tied or tucked','Trim no closer than 3cm from last stitch then tie off']},{sev:'med',title:'Skipped Stitches on Denim Seams',causes:['Needle too fine for denim weight','Needle deflecting at intersections','Looper timing slightly off'],fixes:['Use #21 for 14oz+ denim','Slow speed at seam intersections','Re-time looper: should pass needle 1.8–2.2mm above eye']}]),
+    threading:`<ul class="step-list"><li>Thread 3 cones on thread stand behind machine</li><li>Route each thread through corresponding overhead guide</li><li>Thread front tension assemblies (3 separate dials)</li><li>Thread needle take-up guides in order right to left</li><li>Thread needles right to left: needle 1, 2, 3</li><li>Thread 3 loopers from right side of machine</li><li>Pull all threads through throat plate before starting</li></ul>`
+  },
+  jukiMO644: {
+    name:'Juki MO-6714S', type:'5-Thread Safety Stitch Overlock',
+    overview:`<div class="info-block">The MO-6714S is the factory-standard for serging operations. It simultaneously trims, overcasts, and secures seams in one pass, essential for knit and woven garment finishing at speed.</div>`,
+    specs: specTable([['Max Speed','8,000 spm'],['Threads','5'],['Stitch Width','3–5.7mm (adjustable)'],['Stitch Length','1.5–4.5mm'],['Diff. Feed Ratio','0.7–2.0'],['Needle','DC×27 #9–#16'],['Knife Width','Upper 1.5mm'],['Lubrication','Auto']]),
+    parts: partsList(['2 needles (left/right)','Upper looper','Lower looper','Upper knife (replaceable)','Lower knife (fixed)','Differential feed (front/rear)','Presser foot','Needle plate (overlock)','Thread cone stand (5 spools)','Thread tension discs (5)']),
+    trouble: mkTrouble(overlockTroubleData),
+    threading:`<ul class="step-list"><li>Thread in order: lower looper → upper looper → right needle → left needle (some models differ — follow color labels)</li><li>Use tweezers for looper threading — very tight spaces</li><li>Ensure all threads are under presser foot before starting</li><li>Test differential feed on scrap at both extremes before production</li></ul>`
+  },
+  jukiMO3316: {
+    name:'Juki MO-3316', type:'3/4-Thread Overlock',
+    overview:`<div class="info-block">Versatile overlock that converts between 3-thread and 4-thread configurations. Built-in rolled hem capability without changing the needle plate makes this a flexible choice for diverse operations.</div>`,
+    specs: specTable([['Max Speed','7,000 spm'],['Thread Config','3 or 4 threads'],['Rolled Hem','Built-in lever'],['Stitch Width','2.0–5.0mm'],['Knife','Upper (replaceable)'],['Needle','DC×27']]),
+    parts: partsList(['Single needle (4-thread) or double (safety stitch)','Upper looper','Lower looper','Rolled hem lever','Upper knife','Differential feed dogs','Thread tension (3 or 4 positions)']),
+    trouble: mkTrouble(overlockTroubleData.slice(0,3)),
+    threading:`<ul class="step-list"><li>For 3-thread: thread lower looper, upper looper, then single needle</li><li>For 4-thread: add second needle threading</li><li>For rolled hem: engage rolled hem lever, remove upper knife, adjust lower looper tension tighter</li></ul>`
+  },
+  doubleHead: {
+    name:'Double Head Auto Embroidery', type:'2-Head CNC Embroidery Machine',
+    overview:`<div class="info-block">Double-head automatic embroidery machines allow simultaneous stitching on two hoops, doubling production output. They are controlled by embedded computers running embroidery design files (.DST, .PES, .JEF formats).</div><p style="color:#9aacbb;font-size:.88rem;line-height:1.7;margin-top:1rem">Critical maintenance areas: rotary hook timing, color change mechanism, frame drive belts, and upper thread sensors. See the Error Codes tab in the AUTO DOUBLE HEAD section for full diagnostic reference.</p>`,
+    specs: specTable([['Heads','2 independent'],['Needles per Head','15 colors'],['Max Speed','1,200 RPM'],['Frame Size','500×400mm (standard)'],['Design Formats','.DST, .PES, .JEF, .EXP'],['Connection','USB + RS232'],['Memory','10,000 designs'],['Display','Color LCD touchscreen'],['Thread Monitor','Optical break sensors']]),
+    parts: partsList(['Rotary hook (×2)','Needle bar assembly (×2)','Take-up lever (×2)','Color change motor','Color change cam','Frame drive (X-axis belt)','Frame drive (Y-axis belt)','X-axis servo motor','Y-axis servo motor','Thread break sensors (×30)','Control board (main CPU)','Color LCD display','Power supply unit','Upper thread guides (15×2)','Bobbin case (×2)']),
+    trouble: mkTrouble([
+      {sev:'high',title:'Head 1 Not Stitching (Head 2 Normal)',causes:['Thread break in head 1 path','Head 1 solenoid/needle driver faulty','Head 1 rotary hook timing off'],fixes:['Rethread head 1 completely','Test head 1 solenoid — replace if not clicking','Re-time head 1 hook: hook point should pass needle 2mm above eye']},
+      {sev:'high',title:'Frame Not Moving After Design Start',causes:['Frame clamped or obstructed','Belt broken or slipped','Motor driver fault (E10/E11)'],fixes:['Check all four sides of frame for obstruction','Inspect and replace X/Y belts if cracked or loose','Check motor driver board; replace if overheated or burnt']},
+      {sev:'med',title:'Design Misregistration (Pattern Shifted)',causes:['Frame slipping in hoop','Motor losing steps','Design start position not set correctly'],fixes:['Tighten hoop clamps; use proper hoop size for garment','Reduce speed; check motor current setting on driver','Always set frame to home position and confirm design origin before start']}
+    ]),
+    threading:`<ul class="step-list"><li>Start from thread cone on stand — route through horizontal thread guide bar</li><li>Down through tension discs on head (each needle color has its own)</li><li>Through take-up spring and take-up lever</li><li>Down through needle bar thread guides (upper, middle, lower)</li><li>Thread needle from front to back</li><li>Load bobbin: ensure 8–10cm tail exits; bobbin should spin counter-clockwise when pulled</li><li>Repeat for head 2 identically</li></ul>`
+  },
+  singer201: {
+    name:'Singer 201K', type:'Domestic Lockstitch · Vintage',
+    overview:`<div class="info-block">The Singer 201K is widely regarded as one of the finest domestic sewing machines ever made. Its cast-iron construction, fully enclosed oiling system, and precision rotary hook produce stitch quality rivaling industrial machines at moderate speeds.</div>`,
+    specs: specTable([['Type','Domestic lockstitch'],['Needle','15×1 (130/705H)'],['Bobbin','Singer long shuttle (201K specific)'],['Stitch Length','Adjustable lever (0–5mm)'],['Hook','Rotary hook'],['Drive','Motor (belt) or treadle'],['Weight','~14kg head'],['Material','Cast iron bed and arm']]),
+    parts: partsList(['Needle (15×1)','Long shuttle bobbin','Bobbin case (201K long shuttle)','Rotary hook','Presser foot','Feed dog','Needle plate','Take-up lever','Presser bar','Tension assembly','Bobbin winder','Hand wheel','Drive belt','Needle clamp screw']),
+    trouble: mkTrouble(manualTroubleData),
+    threading:`<ul class="step-list"><li>Raise needle to highest position (turn hand wheel toward you)</li><li>Raise presser foot lever</li><li>Place thread on spool pin; loop through spool pin retainer</li><li>Thread down to tension assembly — through the numbered guides (follow 1→2→3→4)</li><li>Up through take-up lever</li><li>Down to needle bar guide</li><li>Thread needle left to right</li><li>Insert wound bobbin into shuttle; pull thread through slot</li><li>Lower needle into plate hole; pull bobbin thread up</li></ul>`
+  },
+  swan: {
+    name:'Swan Model 1A', type:'Domestic Treadle / Electric',
+    overview:`<div class="info-block">The Swan is a classic domestic machine common in African and South Asian markets. Its reliable simple mechanism and widely available spare parts make it ideal for home tailoring and small workshops.</div>`,
+    specs: specTable([['Needle','15×1'],['Drive','Treadle or electric motor'],['Stitch','Lockstitch'],['Bobbin','Standard Class 66'],['Thread','Upper + lower (2-thread)'],['Adjustment','Mechanical dials']]),
+    parts: partsList(['Needle 15×1','Class 66 bobbin','Bobbin case','Hook assembly','Presser foot','Feed dog','Needle plate','Drive belt (treadle)','Treadle mechanism','Thread tension disc']),
+    trouble: mkTrouble(manualTroubleData.slice(2,5)),
+    threading:`<ul class="step-list"><li>Raise presser foot and needle to top</li><li>Guide thread from spool through top guide, down to tension discs</li><li>Up through take-up lever, down to needle</li><li>Thread needle front to back</li><li>Wind and insert bobbin; pull thread up through plate</li></ul>`
+  },
+  butterfly: {
+    name:'Butterfly JA2-2', type:'Domestic Treadle Lockstitch',
+    overview:`<div class="info-block">The Butterfly JA2-2 is an entry-level treadle machine popular across Africa and Asia. Its vibrating shuttle mechanism is older technology but is highly repairable with simple tools — making it popular where technical service is limited.</div>`,
+    specs: specTable([['Needle','15×1'],['Drive','Treadle'],['Stitch','Lockstitch'],['Hook','Vibrating shuttle'],['Bobbin','Long shuttle bobbin'],['Feed','Drop feed dogs']]),
+    parts: partsList(['Needle 15×1','Long shuttle','Long bobbin','Needle plate','Feed dog','Presser foot','Vibrating shuttle race','Take-up lever','Treadle belt','Treadle foot board']),
+    trouble: mkTrouble([
+      {sev:'high',title:'Shuttle Jamming',causes:['Lint buildup in shuttle race','Shuttle not seated correctly','Bobbin thread tension too tight'],fixes:['Remove shuttle, clean race thoroughly with brush','Re-seat shuttle ensuring click into latch','Loosen shuttle spring by ¼ turn counter-clockwise']},
+      {sev:'med',title:'Treadle Belt Slipping',causes:['Belt stretched','Belt oily or dirty','Wheel groove worn'],fixes:['Shorten belt or replace with new leather/rubber belt','Clean belt and wheel with dry cloth','If groove is smooth, roughen with sandpaper']},
+      ...manualTroubleData.slice(0,2)
+    ]),
+    threading:`<ul class="step-list"><li>Wind bobbin and place in long shuttle</li><li>Insert shuttle into vibrating shuttle race</li><li>Thread upper path: spool → top guides → tension discs → take-up lever → needle guides → needle</li><li>Draw bobbin thread up through plate, pull both to the rear</li></ul>`
+  }
+};
+
+// ─── RENDER ERROR CODES ───
+function renderErrorCodes() {
+  document.getElementById('errorCodes').innerHTML = errorCodesData.map(e => `
+    <div class="error-card ${e.type === 'warning' ? 'warning' : e.type === 'info' ? 'info' : ''}">
+      <div class="error-code">${e.code}</div>
+      <div class="error-details">
+        <div class="error-name">${e.name}</div>
+        <div class="error-desc">${e.desc}</div>
+        <div class="error-fix"><strong>Remedy</strong>${e.fix}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ─── RENDER TROUBLE SECTIONS ───
+function renderAllTrouble() {
+  document.getElementById('industrialTrouble').innerHTML = mkTrouble(industrialTroubleData);
+  document.getElementById('overlockTrouble').innerHTML = mkTrouble(overlockTroubleData);
+  document.getElementById('manualTrouble').innerHTML = mkTrouble(manualTroubleData);
+}
+
+// ─── RENDER CHECKLISTS ───
+function renderChecklists() {
+  mkChecklist(dailyItems, 'dailyList');
+  mkChecklist(weeklyItems, 'weeklyList');
+  mkChecklist(monthlyItems, 'monthlyList');
+}
+
+// ─── SEARCH ───
+function handleSearch(val) {
+  val = val.toLowerCase().trim();
+  if(!val) return;
+  const keywords = {
+    'juki':()=>switchTab('industrial'),
+    'kansai':()=>switchTab('industrial'),
+    'overlock':()=>switchTab('overlock'),
+    'serger':()=>switchTab('overlock'),
+    'auto':()=>switchTab('auto'),
+    'double head':()=>switchTab('auto'),
+    'error':()=>switchTab('auto'),
+    'e0':()=>switchTab('auto'),
+    'singer':()=>switchTab('manual'),
+    'swan':()=>switchTab('manual'),
+    'butterfly':()=>switchTab('manual'),
+    'maintenance':()=>switchTab('maintenance'),
+    'oil':()=>switchTab('maintenance'),
+    'thread break':()=>{switchTab('industrial');},
+    'skipped':()=>switchTab('industrial'),
+  };
+  for(const [k,fn] of Object.entries(keywords)) {
+    if(val.includes(k)) { fn(); return; }
+  }
+}
+
+// ─── INIT ───
+renderErrorCodes();
+renderAllTrouble();
+renderChecklists();
+</script>
+
+<!-- ═══ FLOATING WHATSAPP BUTTON ═══ -->
+<style>
+  .float-wa {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .float-wa-label {
+    background: #fff;
+    color: #111;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.55rem 0 0.55rem 0;
+    border-radius: 30px 0 0 30px;
+    white-space: nowrap;
+    box-shadow: -3px 3px 12px rgba(0,0,0,0.25);
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-width 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  }
+  .float-wa:hover .float-wa-label {
+    max-width: 200px;
+    opacity: 1;
+    padding: 0.55rem 0.4rem 0.55rem 1.2rem;
+  }
+  .float-wa-icon {
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .float-wa:hover .float-wa-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.7);
+  }
+  .float-wa-icon::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 3px solid rgba(37,211,102,0.5);
+    animation: wa-pulse 2s ease-out infinite;
+  }
+  @keyframes wa-pulse {
+    0%   { transform: scale(1); opacity: 0.8; }
+    70%  { transform: scale(1.35); opacity: 0; }
+    100% { transform: scale(1.35); opacity: 0; }
+  }
+  @media (max-width: 600px) {
+    .float-wa-label { display: none; }
+    .float-wa-icon { width: 52px; height: 52px; }
+  }
+</style>
+
+<a class="float-wa"
+   href="https://wa.me/254721681418?text=Hello%20OmniStitch%20Pro%2C%20I%20need%20help%20with%20my%20sewing%20machine."
+   target="_blank"
+   title="Chat with OmniStitch Pro on WhatsApp">
+  <span class="float-wa-label">Chat with us on WhatsApp</span>
+  <span class="float-wa-icon">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </span>
+</a>
+
+</body>
+</html>
